@@ -5,7 +5,9 @@ extends VBoxContainer
 # var a = 2
 # var b = "text"
 var subtask = preload("res://main/SubTask.tscn")
-
+var progress = 0
+signal progress_update()
+onready var PROGRESS_BAR = $ProgressBar
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -14,6 +16,16 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func _physics_process(delta):
+	run_smoothing()
+
+func run_smoothing():
+	PROGRESS_BAR.value += ((progress-PROGRESS_BAR.value)/20)
+	set_physics_process(!(abs(PROGRESS_BAR.value-progress) < 1))
+	PROGRESS_BAR.value += (progress-PROGRESS_BAR.value)*int((abs(PROGRESS_BAR.value-progress) < 1))
+
+
+
 func update_progress():
 	var _sons = []
 	var ctr = 0
@@ -23,7 +35,9 @@ func update_progress():
 			if i.done:
 				doned+=1
 			ctr+=1
-	$ProgressBar.value = 100*doned/ctr
+	progress = 100*doned/ctr
+	set_physics_process(true)
+	emit_signal("progress_update")
 
 func add_subtask():
 	var subtask_instance = subtask.instance()

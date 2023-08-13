@@ -39,9 +39,9 @@ rect_min_size = Vector2( 200, 0 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 visible = false
-margin_top = 62.0
+margin_top = 46.0
 margin_right = 994.0
-margin_bottom = 62.0
+margin_bottom = 46.0
 size_flags_vertical = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
