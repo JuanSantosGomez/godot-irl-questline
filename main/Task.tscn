@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main/Task.gd" type="Script" id=1]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+margin_right = 994.0
+margin_bottom = 500.0
+size_flags_vertical = 3
+script = ExtResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 994.0
+margin_bottom = 24.0
+
+[node name="TextureButton" type="Button" parent="HBoxContainer"]
+margin_right = 20.0
+margin_bottom = 24.0
+toggle_mode = true
+text = ">"
+
+[node name="Label" type="LineEdit" parent="HBoxContainer"]
+margin_left = 24.0
+margin_right = 971.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Task Number 1"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+margin_left = 975.0
+margin_right = 994.0
+margin_bottom = 24.0
+text = "x"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_top = 28.0
+margin_right = 994.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+margin_top = 62.0
+margin_right = 994.0
+margin_bottom = 62.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+visible = false
+margin_top = 66.0
+margin_right = 994.0
+margin_bottom = 86.0
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer2"]
+margin_right = 917.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+color = Color( 0, 0, 0, 1 )
+
+[node name="Button" type="Button" parent="HBoxContainer2"]
+margin_left = 921.0
+margin_right = 994.0
+margin_bottom = 20.0
+text = "+ Subtask"
+
+[connection signal="toggled" from="HBoxContainer/TextureButton" to="." method="_on_TextureButton_toggled"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_delButton_pressed"]
+[connection signal="pressed" from="HBoxContainer2/Button" to="." method="_on_Button_pressed"]
