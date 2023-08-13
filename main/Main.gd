@@ -5,8 +5,8 @@ extends PanelContainer
 # var a = 2
 # var b = "text"
 
-onready var PROGRESS_BAR = $ScrollContainer/VBoxContainer2/CenterContainer/HBoxContainer
-onready var TASKS_CONTAINER = $ScrollContainer/VBoxContainer2/VBoxContainer
+onready var PROGRESS_BAR = $VBoxContainer/CenterContainer/HBoxContainer
+onready var TASKS_CONTAINER = $VBoxContainer/ScrollContainer/VBoxContainer2/VBoxContainer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_task()
