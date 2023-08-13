@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
+
+[node name="Main" type="PanelContainer"]
+margin_top = 53.0
+margin_right = 1024.0
+margin_bottom = 566.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 1009.0
+margin_bottom = 498.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 994.0
+margin_bottom = 483.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
