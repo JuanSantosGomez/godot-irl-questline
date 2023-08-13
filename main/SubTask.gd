@@ -6,10 +6,11 @@ extends HBoxContainer
 # var b = "text"
 var done = false
 var father
+var mint = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	mint=$LineEdit.rect_min_size.y
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -29,3 +30,10 @@ func _on_CheckBox_toggled(button_pressed):
 
 func _on_Button_pressed():
 	father.removeme(self)
+
+
+
+
+func _on_LineEdit_text_changed():
+	print($LineEdit.get_total_visible_rows())
+	$LineEdit.rect_min_size.y=mint+($LineEdit.get_total_visible_rows())*29-25
