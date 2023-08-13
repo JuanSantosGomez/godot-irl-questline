@@ -6,6 +6,7 @@ extends VBoxContainer
 # var b = "text"
 var subtask = preload("res://main/SubTask.tscn")
 var progress = 0
+var subtasks = Vector2(0,0)
 signal progress_update()
 onready var PROGRESS_BAR = $ProgressBar
 # Called when the node enters the scene tree for the first time.
@@ -35,6 +36,10 @@ func update_progress():
 			if i.done:
 				doned+=1
 			ctr+=1
+	
+	subtasks.x = doned
+	subtasks.y = ctr
+	
 	progress = 100*doned/ctr
 	set_physics_process(true)
 	emit_signal("progress_update")

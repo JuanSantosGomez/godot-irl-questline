@@ -5,7 +5,8 @@ extends PanelContainer
 # var a = 2
 # var b = "text"
 
-
+onready var PROGRESS_BAR = $ScrollContainer/VBoxContainer2/CenterContainer/HBoxContainer
+onready var TASKS_CONTAINER = $ScrollContainer/VBoxContainer2/VBoxContainer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_task()
@@ -19,17 +20,25 @@ func _ready():
 var task = preload("res://main/Task.tscn")
 func update_bars():
 	var vali = 0
-	
-	for i in $ScrollContainer/VBoxContainer2/VBoxContainer.get_children():
+	var donetasks = 0
+	var task_count = len(TASKS_CONTAINER.get_children())
+	var subtasks = Vector2(0,0)
+	for i in TASKS_CONTAINER.get_children():
 		vali+=i.progress
+		donetasks+=floor(i.progress/100)
+		subtasks.x+=i.subtasks.x
+		subtasks.y+=i.subtasks.y
+		
 	
-	if round(vali/len($ScrollContainer/VBoxContainer2/VBoxContainer.get_children()))>$ScrollContainer/VBoxContainer2/CenterContainer/HBoxContainer.progress:
+	if round(vali/task_count)>PROGRESS_BAR.progress:
 		add_trauma()
 	
-	$ScrollContainer/VBoxContainer2/CenterContainer/HBoxContainer.progress=round(vali/len($ScrollContainer/VBoxContainer2/VBoxContainer.get_children()))
+	PROGRESS_BAR.progress=round(vali/task_count)
+	PROGRESS_BAR.labels = str(donetasks)+"/"+str(task_count)+" Tasks\n"+str(subtasks.x)+"/"+str(subtasks.y)+" Subtasks"
+	
 func add_task():
 	var task_instance = task.instance()
-	$ScrollContainer/VBoxContainer2/VBoxContainer.add_child(task_instance)
+	TASKS_CONTAINER.add_child(task_instance)
 	task_instance.connect("progress_update", self, "update_bars")
 
 
@@ -37,7 +46,7 @@ func add_task():
 
 onready var noise = OpenSimplexNoise.new()
 var noise_y = 0
-var default_decay = 0.99
+var default_decay = 0.96
 export var decay = 0.99  # How quickly the shaking stops [0, 1].
 export var max_offset = Vector2(50, 30)  # Maximum hor/ver shake in pixels.
 export var max_roll = 0.1  # Maximum rotation in radians (use sparingly).
