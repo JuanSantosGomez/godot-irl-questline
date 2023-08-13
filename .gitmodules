@@ -1,0 +1,3 @@
+[submodule "godot-alt-window"]
+	path = godot-alt-window
+	url = git@github.com:JuanSantosGomez/godot-alt-window.git
