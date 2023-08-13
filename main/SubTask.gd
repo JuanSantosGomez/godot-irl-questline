@@ -21,10 +21,13 @@ func _on_CheckBox_toggled(button_pressed):
 	if button_pressed:
 		done = true
 		$LineEdit.modulate=Color(1.0,1.0,1.0,.3)
+		$LineEdit.readonly=true
+		$LineEdit.rect_min_size.y=mint
 	else:
 		done = false
 		$LineEdit.modulate=Color(1.0,1.0,1.0,1)
-	
+		$LineEdit.readonly=false
+		_on_LineEdit_text_changed()
 	father.update_progress()
 
 
@@ -35,5 +38,4 @@ func _on_Button_pressed():
 
 
 func _on_LineEdit_text_changed():
-	print($LineEdit.get_total_visible_rows())
 	$LineEdit.rect_min_size.y=mint+($LineEdit.get_total_visible_rows())*29-25
