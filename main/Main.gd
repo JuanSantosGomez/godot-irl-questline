@@ -37,8 +37,8 @@ func add_task():
 
 onready var noise = OpenSimplexNoise.new()
 var noise_y = 0
-var default_decay = 0.8
-export var decay = 0.8  # How quickly the shaking stops [0, 1].
+var default_decay = 0.99
+export var decay = 0.99  # How quickly the shaking stops [0, 1].
 export var max_offset = Vector2(50, 30)  # Maximum hor/ver shake in pixels.
 export var max_roll = 0.1  # Maximum rotation in radians (use sparingly).
 export (NodePath) var target  # Assign the node this camera will follow.
@@ -72,3 +72,7 @@ func shakers(delta):
 
 func _physics_process(delta):
 	shakers(delta)
+
+
+func _on_Button_pressed():
+	add_task()

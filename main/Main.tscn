@@ -42,3 +42,23 @@ labels = "3/10 Tasks"
 margin_top = 224.0
 margin_right = 994.0
 margin_bottom = 224.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer2"]
+margin_top = 228.0
+margin_right = 994.0
+margin_bottom = 273.0
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer2/HBoxContainer"]
+margin_right = 909.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 0, 20 )
+size_flags_horizontal = 3
+color = Color( 0, 0, 0, 1 )
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 913.0
+margin_right = 994.0
+margin_bottom = 45.0
+text = "+Task"
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer2/HBoxContainer/Button" to="." method="_on_Button_pressed"]
