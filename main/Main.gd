@@ -33,11 +33,12 @@ func update_bars():
 		subtasks.x+=i.subtasks.x
 		subtasks.y+=i.subtasks.y
 		
-	
-	if round(vali/task_count)>PROGRESS_BAR.progress:
-		add_trauma()
-	
-	PROGRESS_BAR.progress=round(vali/task_count)
+	if task_count>0:
+		if round(vali/task_count)>PROGRESS_BAR.progress:
+			add_trauma()
+		PROGRESS_BAR.progress=round(vali/task_count)
+	else:
+		PROGRESS_BAR.progress=0
 	PROGRESS_BAR.labels = str(donetasks)+"/"+str(task_count)+" Tasks\n"+str(subtasks.x)+"/"+str(subtasks.y)+" Subtasks"
 	
 func add_task():
