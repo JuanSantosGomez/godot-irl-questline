@@ -10,7 +10,7 @@ jobs:
     if: github.ref == 'refs/heads/master'
     strategy:
       matrix:
-        platform: [linux, windows, mac]
+        platform: [windows, mac]
     steps:
       - uses: actions/checkout@v2
         with:
