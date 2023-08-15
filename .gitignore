@@ -2,3 +2,5 @@
 .DS_Store
 project.godot
 .*
+.github
+steps.build.*
