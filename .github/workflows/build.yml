@@ -7,6 +7,7 @@ on:
 jobs:
   Godot:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     strategy:
       matrix:
         platform: [linux, windows, mac]
