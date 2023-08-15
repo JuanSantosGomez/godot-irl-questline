@@ -54,6 +54,7 @@ func _on_Button_pressed():
 	add_subtask()
 
 func removeme(target):
+	
 	target.queue_free()
 	update_progress()
 
@@ -68,4 +69,6 @@ func _on_TextureButton_toggled(button_pressed):
 
 
 func _on_delButton_pressed():
+	get_parent().remove_child(self)
+	emit_signal("progress_update")
 	queue_free()

@@ -13,6 +13,10 @@ func _ready():
 	noise.seed = randi()
 	noise.period = 4
 	noise.octaves = 2
+#	var output = []
+
+#	print(output)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
@@ -40,6 +44,7 @@ func add_task():
 	var task_instance = task.instance()
 	TASKS_CONTAINER.add_child(task_instance)
 	task_instance.connect("progress_update", self, "update_bars")
+	update_bars()
 
 
 #SHAKER ALGORITHM
